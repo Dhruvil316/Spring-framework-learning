@@ -1,7 +1,10 @@
 package dao;
-
 import Entities.Task;
+import com.mysql.cj.result.Row;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.util.List;
 
 public class TaskDaoImp implements TaskDao{
 
@@ -41,6 +44,23 @@ public class TaskDaoImp implements TaskDao{
     public int delete (int id) {
         String deleteQuery = "DELETE from tasks where id = ?";
         return jdbcTemplate.update(deleteQuery , id);
+    }
+
+    @Override
+    public Task getTask(int id) {
+//        select single student data
+        String query = "SELECT * from tasks where id = ?" ;
+        RowMapper <Task> rowMapper = new RowMapperImp() ;
+        Task res = this.jdbcTemplate.queryForObject(query , rowMapper , id ) ;
+        return res;
+    }
+
+    @Override
+    public List<Task> getAllTasks() {
+        String query = "SELECT * from tasks" ;
+        RowMapper <Task> rowMapper = new RowMapperImp();
+        List<Task> tasks =  this.jdbcTemplate.query(query , rowMapper ) ;
+        return tasks ;
     }
 
     public JdbcTemplate getJdbcTemplate() {
