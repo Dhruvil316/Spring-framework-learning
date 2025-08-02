@@ -1,0 +1,9 @@
+for returning single object
+public T queryForObject ( String sql , RowMapper <T> rowMapper , Object args )
+
+for multiple objects
+public List <T> query ( String sql , RowMapper <T> rowMapper )
+
+String sql -> will be the select query
+RowMapper -> converts the result set into object.
+we need to implement the RowMapper .
