@@ -16,6 +16,27 @@ public class TaskDaoImp implements TaskDao{
         return res;
     }
 
+    @Override
+    public int change(Task task) {
+        // update query
+
+        String selectQuery = "SELECT title, description FROM tasks WHERE id = ?";
+        Task existing = jdbcTemplate.queryForObject(selectQuery, (rs, rowNum) -> {
+            Task t = new Task();
+            t.setTitle(rs.getString("title"));
+            t.setDescription(rs.getString("description"));
+            return t;
+        }, task.getId());
+
+        // Use existing values if null is passed
+        String updatedTitle = task.getTitle() != null ? task.getTitle() : existing.getTitle();
+        String updatedDescription = task.getDescription() != null ? task.getDescription() : existing.getDescription();
+
+        // Update query
+        String updateQuery = "UPDATE tasks SET title = ?, description = ? WHERE id = ?";
+        return jdbcTemplate.update(updateQuery, updatedTitle, updatedDescription, task.getId());
+    }
+
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
     }
