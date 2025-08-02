@@ -37,6 +37,12 @@ public class TaskDaoImp implements TaskDao{
         return jdbcTemplate.update(updateQuery, updatedTitle, updatedDescription, task.getId());
     }
 
+    @Override
+    public int delete (int id) {
+        String deleteQuery = "DELETE from tasks where id = ?";
+        return jdbcTemplate.update(deleteQuery , id);
+    }
+
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
     }
