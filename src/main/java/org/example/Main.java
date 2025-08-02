@@ -14,12 +14,10 @@ public class Main {
         ApplicationContext context = new ClassPathXmlApplicationContext("jdbc-template/config.xml") ;
         TaskDao task = context.getBean("taskDaoImpl" , TaskDao.class) ; // we can use the parent
 
-        Task t = new Task() ;
-        t.setId(13);
-        t.setTitle("Samosa");
-        t.setDescription("Samosa party");
 
-        int res = task.insert(t) ;
-        System.out.println(res) ;
+        System.out.println("deletion ");
+        int res = task.delete(13) ;
+        System.out.println("the line is changed " + res);
+
     }
 }
