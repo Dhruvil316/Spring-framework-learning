@@ -10,7 +10,10 @@ import java.util.*;
 @Controller
 public class HomeController {
 
+//    These are handler methods
     @RequestMapping("/")
+
+//    Model is use to sent the data to view / jsp
     public String root(Model model) {
         model.addAttribute("name" , "Prisha rana");
         List<String> arr = new ArrayList<>() ;
