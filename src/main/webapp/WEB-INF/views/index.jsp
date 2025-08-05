@@ -23,6 +23,7 @@
             for (String s : arr) {
     %>
                 <li><%= s %></li>
+
     <%
             }
         } else {
