@@ -68,11 +68,24 @@
                 </select>
             </div>
 
+            <!-- Address -->
+
+
+            <!-- Pincode and City -->
+            <div class="mb-4 row">
+                <div class="col-md-6">
+                    <label for="pincode" class="form-label">Pincode</label>
+                    <input type="text" class="form-control" id="pincode" name="address.pincode" placeholder="Enter Pincode">
+                </div>
+                <div class="col-md-6">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="address.city" placeholder="Enter City">
+                </div>
+            </div>
+
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>
-
-
     </div>
 </div>
 

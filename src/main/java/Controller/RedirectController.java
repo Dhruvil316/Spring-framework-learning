@@ -1,6 +1,7 @@
 package Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -22,9 +23,9 @@ public class RedirectController {
         return r ;
     }
 
-    @RequestMapping("/two")
-    public String Two (){
-        System.out.println("Handler two");
+    @RequestMapping("/two/{id}")
+    public String Two (@PathVariable("id") int user_id ) {
+        System.out.printf("Handler two and the id : %d" , user_id );
         return "index" ;
     }
 }
