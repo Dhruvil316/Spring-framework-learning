@@ -2,11 +2,8 @@ package Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.RequestParam;
 import Model.User ;
 
 @Controller
@@ -14,6 +11,7 @@ public class LoginController {
 
     @RequestMapping(path = "/login" , method = RequestMethod.GET )
     public String login() {
+        int a = 10 / 0 ;
         return "login" ;
     }
     //  OLD WAY -> Request object
@@ -44,5 +42,14 @@ public class LoginController {
     public String processLogin (@ModelAttribute User user ) {
 //        model.addAttribute("user" , user) ; -> no need for this if we are using the model attribute
         return "success" ;
+    }
+
+//    By default badha exception par run thasey
+//The @ExceptionHandler method must declare the type of exception it handles.
+
+    @ExceptionHandler(Exception.class)
+    public String exceptionHandlerNull (Model m ) {
+        m.addAttribute("msg" , "some exceptino") ;
+        return "exception" ;
     }
 }

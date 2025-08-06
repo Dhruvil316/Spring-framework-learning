@@ -1,12 +1,3 @@
 
 --------------------------------------------------------------------------------------------------------
-PathVariable -> most useful in REST Apis
-bind method parameter to uri template
-
-i.e
-
-@RequestMapping( "/book/{id}" )
-public String handler ( @PathVariable ( "id" ) int productId )
-{
-
-}
+Either handle exception for one handler or all-in-one
