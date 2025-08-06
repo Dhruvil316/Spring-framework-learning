@@ -1,34 +1,7 @@
-There are 3 ways to take out the data from the view
+There are 3 ways to redirect
 
-1) request object -> getRequest () of HttpServletRequest
-2) @RequestParam
-3) @ModelAttribute
+1) HttpServletResponse
+2) redirect prefix
+3) RedirectView
 
 --------------------------------------------------------------------------------------------------------
-@RequestMapping Annotation
-- maps the url to class or handler method
-
-When applied on class
-
-@RequestMapping("/first")
-@Controller
-public class HomeController {
-    @RequestMapping("/home")
-    public String home (Model model) {
-        model.addAttribute("name" , "Prisha rana");
-        List<String> arr = new ArrayList<>() ;
-        arr.add("Dhruvil");
-        arr.add("Chetan");
-        arr.add("Pu");
-
-        model.addAttribute("list" , arr) ;
-        return "index";
-    }
-}
-
-means to get home we need to write this : /first/home
-
--- POST , PUT , DELETE , GET --
-by default it is GET request
-
-@RequestMapping ( path = "/home" , method = RequestMethod.POST )
